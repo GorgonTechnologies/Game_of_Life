@@ -95,6 +95,24 @@ unsigned int from_binary(char* value, char len) {
   return result;
 }
 
+/*
+Simular to conversion via union
+
+typedef struct{         |  typedef struct{        |  typedef union{
+  unsigned char r,g,b;  |    unsigned short x,y;  |    two t2; three t3;
+} three;                |  } two;                 |  } two_three;
+
+two_three converter = {.t3={254, 254, 254}};
+
+printf("%d, %d, %d => %d, %d\n", 
+  converter.t3.r, converter.t3.g, converter.t3.b,
+  converter.t2.x, converter.t2.y
+);
+
+However conversion is nor uniformly distributed, and this method solves this
+255, 255, 255 => 65535, 255
+*/
+
 void hash(unsigned int row, unsigned int col, unsigned char out[3]){
   // row           col                     color
   // 4095          4095                =>  255,      255,      255
