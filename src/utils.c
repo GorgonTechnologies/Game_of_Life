@@ -102,7 +102,7 @@ typedef struct{         |  typedef struct{        |  typedef union{
   unsigned char r,g,b;  |    unsigned short x,y;  |    two t2; three t3;
 } three;                |  } two;                 |  } two_three;
 
-two_three converter = {.t3={254, 254, 254}};
+two_three converter = {.t3={255, 255, 255}};
 
 printf("%d, %d, %d => %d, %d\n", 
   converter.t3.r, converter.t3.g, converter.t3.b,
